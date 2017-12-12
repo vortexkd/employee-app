@@ -1,10 +1,22 @@
-<p>
-  employee works!
-</p>
-
 <button	(click)="logEmployees()">Log</button>
-<ul class="heroes">
-  <li *ngFor="let employee of employees">
-		<span class="badge">{{employee.id}}</span> {{employee.name}}
-  </li>
-</ul>
+<table class="heroes">
+  <tr>
+    <td class="badge">ID</td><td>コード</td><td>名前</td><td>入社日</td><td>所属部署コード</td>
+  </tr>
+  <tr *ngFor="let employee of employees">
+    <td class="badge">
+      <span>{{employee.id}}</span>
+    </td>
+    <td>
+      <span>{{employee.code}}</span>
+    </td>
+    <td>
+      <span>{{employee.name}}</span>
+    </td>
+    <td>
+      {{employee.join_date}}  </td>
+    <td>
+      {{employee.dept_code}}
+    </td>
+  </tr>
+</table>

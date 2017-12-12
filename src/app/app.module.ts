@@ -3,18 +3,17 @@ import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
 
 import { EmployeeService } from './employee.service';
-import { EmployeeComponent }      from './employee/employee.component';
+import { EmployeeComponent } from './employee/employee.component';
 import { AppComponent } from './app.component';
+
 
 
 @NgModule({
   declarations: [
-    AppComponent,
-	EmployeeComponent
+    AppComponent, EmployeeComponent
   ],
   imports: [
-    BrowserModule,
-	HttpClientModule
+    BrowserModule, HttpClientModule
   ],
   providers: [EmployeeService],
   bootstrap: [AppComponent]
