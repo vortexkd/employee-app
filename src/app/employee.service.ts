@@ -27,30 +27,20 @@ export class EmployeeService {
 
   getEmployees(): Observable<Employee[]> {
     return this.http.get<MyResponse>(this.dataUrl + this.all).map(
-      (response: MyResponse) => {
-        console.log(response);
-        if (response.status !== STATUS_OK) {
-          console.log(response.message);
-          return [];
-        }
-        return this.castToEmployeeList(response.ret);
-      }
-    );
+      (response: MyResponse) => this.handleResponse(response));
   }
 
   filterEmployees(query: string, filter: number): Observable<Employee[]> {
     const params = {queryCriteria: query, column: filter};
     console.log(query);
     return this.http.post<MyResponse>(this.dataUrl + 'query', params).map(
-      (response: MyResponse) => {
-        console.log(response);
-        if (response.status !== STATUS_OK) {
-          console.log(response.message);
-          return [];
-        }
-        return this.castToEmployeeList(response.ret);
-      }
-    );
+      (response: MyResponse) => this.handleResponse(response));
+  }
+
+  insertEmployee(name: string, join_date: string, dept: string) {
+    const params = {name: name, join_date: join_date, department: dept};
+    return this.http.post<MyResponse>(this.dataUrl + 'add', params).map(
+      (response: MyResponse) => response);
   }
 
   private castToEmployeeList(employees: Array<object>): Employee[] {
@@ -67,7 +57,13 @@ export class EmployeeService {
             ));
           i++;
         }
-    console.log(result);
     return result;
+  }
+  private handleResponse(response: MyResponse): Employee[] {
+    if (response.status !== STATUS_OK) {
+      return [];
+    }
+    console.log(response);
+    return this.castToEmployeeList(response.ret);
   }
 }
