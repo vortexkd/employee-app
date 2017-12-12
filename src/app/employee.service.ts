@@ -1,19 +1,13 @@
 import {Injectable} from '@angular/core';
-import {HttpClient, HttpHeaders} from '@angular/common/http';
+import {HttpClient} from '@angular/common/http';
 
 
 import {Observable} from 'rxjs/Observable';
-// import { map } from 'rxjs/operators';
 import 'rxjs/add/operator/map';
 
 import {Employee} from './employee';
 import {MyResponse} from './my-response';
-import {catchError, tap} from 'rxjs/operators';
-import {forEach} from '@angular/router/src/utils/collection';
 
-const httpOptions = {
-  headers: new HttpHeaders({'Content-Type': 'application/json'})
-};
 const STATUS_OK = 'OK';
 
 @Injectable()
@@ -37,9 +31,15 @@ export class EmployeeService {
       (response: MyResponse) => this.handleResponse(response));
   }
 
-  insertEmployee(name: string, join_date: string, dept: string) {
+  insertEmployee(name: string, join_date: string, dept: string): Observable<MyResponse> {
     const params = {name: name, join_date: join_date, department: dept};
     return this.http.post<MyResponse>(this.dataUrl + 'add', params).map(
+      (response: MyResponse) => response);
+  }
+
+  updateEmployee(id: string, name: string, join_date: string, dept: string) {
+    const  params = {name: name, date: join_date, dept: dept, token: id};
+    return this.http.post<MyResponse>(this.dataUrl + 'update', params).map(
       (response: MyResponse) => response);
   }
 

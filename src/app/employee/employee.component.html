@@ -24,12 +24,15 @@
       <span>{{employee.code}}</span>
     </td>
     <td>
-      <span>{{employee.name}}</span>
+          <span>{{employee.name}}</span>
     </td>
     <td>
       {{employee.join_date}}  </td>
     <td>
       {{employee.dept_code}}
+      <a routerLink="/edit/{{employee.id}}">
+        <img class="edit-image" src="../../assets/edit.png" height="16" width="16"/>
+      </a>
     </td>
   </tr>
 </table>

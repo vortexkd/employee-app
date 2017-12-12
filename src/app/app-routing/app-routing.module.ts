@@ -3,11 +3,12 @@ import { RouterModule, Routes } from '@angular/router';
 
 import { EmployeeComponent } from '../employee/employee.component';
 import { AddEmployeeComponent } from '../add-employee/add-employee.component';
+import { EditEmployeeComponent } from '../edit-employee/edit-employee.component';
 
 const routes: Routes = [
   { path: 'employees', component: EmployeeComponent },
   { path: 'add', component: AddEmployeeComponent },
-  // { path: 'detail/:id', component: HeroDetailComponent },
+  { path: 'edit/:id', component: EditEmployeeComponent },
   { path: '', redirectTo: '/employees', pathMatch: 'full' }
 ];
 
