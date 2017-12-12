@@ -19,13 +19,29 @@ const STATUS_OK = 'OK';
 @Injectable()
 export class EmployeeService {
 
-  private dataUrl = 'http://localhost:9000/employees';
+  private dataUrl = 'http://localhost:9000/';
+  private all = 'employees';
 
   constructor(private http: HttpClient) {
   }
 
   getEmployees(): Observable<Employee[]> {
-    return this.http.get<MyResponse>(this.dataUrl).map(
+    return this.http.get<MyResponse>(this.dataUrl + this.all).map(
+      (response: MyResponse) => {
+        console.log(response);
+        if (response.status !== STATUS_OK) {
+          console.log(response.message);
+          return [];
+        }
+        return this.castToEmployeeList(response.ret);
+      }
+    );
+  }
+
+  filterEmployees(query: string, filter: number): Observable<Employee[]> {
+    const params = {queryCriteria: query, column: filter};
+    console.log(query);
+    return this.http.post<MyResponse>(this.dataUrl + 'query', params).map(
       (response: MyResponse) => {
         console.log(response);
         if (response.status !== STATUS_OK) {

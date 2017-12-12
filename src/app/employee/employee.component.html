@@ -1,4 +1,17 @@
 <button	(click)="logEmployees()">Log</button>
+<div class="filter-div">
+  <p>
+    フィルター
+  </p>
+  <button	(click)="changeFilter(0)" [class.selected]="filter === 0">なし</button>
+  <button	(click)="changeFilter(1)" [class.selected]="filter === 1">所属部署コード</button>
+  <button	(click)="changeFilter(2)" [class.selected]="filter === 2">名前</button>
+  <button	(click)="changeFilter(3)" [class.selected]="filter === 3">ID</button>
+</div>
+  <div class="filter-details" *ngIf="filter != 'all'" >
+    <input [(ngModel)]="query" type="text" placeholder="検索条件"/>
+    <button (click)="getWithFilter()"> 検索　</button>
+  </div>
 <table class="heroes">
   <tr>
     <td class="badge">ID</td><td>コード</td><td>名前</td><td>入社日</td><td>所属部署コード</td>
