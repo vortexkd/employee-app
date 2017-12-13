@@ -38,9 +38,10 @@ export class EmployeeService {
   }
 
   updateEmployee(id: string, name: string, join_date: string, dept: string) {
+    console.log('service_update' + name);
     const  params = {name: name, date: join_date, dept: dept, token: id};
     return this.http.post<MyResponse>(this.dataUrl + 'update', params).map(
-      (response: MyResponse) => response);
+      (response: MyResponse) => console.log('UPDATE ' + response.message));
   }
 
   private castToEmployeeList(employees: Array<object>): Employee[] {

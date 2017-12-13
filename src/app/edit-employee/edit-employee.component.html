@@ -1,8 +1,17 @@
 <h1>社員編集</h1>
-<div class="form-div">
-  <input type="text" ngModel="{{name}}" />
-  <input type="text" ngModel="{{date}}" />
-  <input type="text" ngModel="{{dept}}" />
+<div class="information">
+  <div class="information-row">
+    <span> 名前 : </span>
+    <input type="text" [(ngModel)]=name />
+  </div>
+  <div class="information-row">
+    <span> 入社日 : </span>
+    <input type="text" [(ngModel)]="date" />
+  </div>
+  <div class="information-row">
+    <span> 入社日 : </span>
+    <input  type="text" [(ngModel)]="dept" />
+  </div>
 </div>
   <button (click)="goBack()"> &lt;Back </button>
   <button (click)="save()"> Save </button>

@@ -19,7 +19,7 @@ export class AddEmployeeComponent implements OnInit {
     this.dept_code = '';
   }
 
-  log(): void {
+  insert(): void {
     if (this.name === '' || this.joined_date === '' || this.dept_code === '') {
       console.log('Please fill out the fields.');
       return;

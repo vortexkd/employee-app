@@ -54,11 +54,6 @@ export class EmployeeComponent implements OnInit {
     }
   }
 
-  log(query: string) {
-    console.log(query);
-  }
-
-
   logEmployees(): void {
     console.log(this.employees);
     // alert();

@@ -1,5 +1,13 @@
-<input [(ngModel)]="name" placeholder="名前" type="text" />
-<input [(ngModel)]="joined_date" placeholder="入社日" type="date" />
-<input [(ngModel)]="dept_code" placeholder="所属部署コード" type="text"/>
-
-<button (click)="log()">Log</button>
+<h1>社員登録</h1>
+<div class="information">
+<div class="information-row">
+  <span> 名前 : </span><input [(ngModel)]="name" placeholder="名前" type="text" />
+</div>
+<div class="information-row">
+  <span> 入社日 : </span><input [(ngModel)]="joined_date" placeholder="入社日" type="date" />
+</div>
+<div class="information-row">
+  <span> 所属部署コード : </span><input [(ngModel)]="dept_code" placeholder="所属部署コード" type="text"/>
+</div>
+</div>
+<button (click)="insert()">Add</button>

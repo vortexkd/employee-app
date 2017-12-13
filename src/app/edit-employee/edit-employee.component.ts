@@ -43,14 +43,16 @@ export class EditEmployeeComponent implements OnInit {
   }
 
   save(): void {
+    console.log(this.name);
     this.employeeService.updateEmployee(this.employee.id.toString(), this.name, this.date, this.dept).subscribe(
       response => {
         this.name = '';
         this.date = '';
         this.dept = '';
-        if (!this.location.back()) {
-          console.log('Something went wrong' + response);
-        }
+        this.location.back();
     });
+  }
+  log(): void {
+    console.log(this.name + ' ' + this.date + ' ' + this.dept);
   }
 }

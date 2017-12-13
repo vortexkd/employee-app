@@ -1,0 +1,22 @@
+div {
+  padding: 5px;
+}
+button {
+  margin-top: 10px;
+}
+
+.information-row {
+  text-align: center;
+  width: 25em;
+  margin: auto;
+}
+.information-row span {
+  display: inline-block;
+  width: 10em;
+  text-align: left;
+}
+.information-row input {
+  width: 15em;
+  height: 2em;
+  padding: 2px;
+}
