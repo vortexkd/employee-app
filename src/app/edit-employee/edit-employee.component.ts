@@ -43,7 +43,7 @@ export class EditEmployeeComponent implements OnInit {
   }
 
   save(): void {
-    console.log(this.name);
+    // console.log(this.name);
     this.employeeService.updateEmployee(this.employee.id.toString(), this.name, this.date, this.dept).subscribe(
       response => {
         this.name = '';
@@ -51,8 +51,5 @@ export class EditEmployeeComponent implements OnInit {
         this.dept = '';
         this.location.back();
     });
-  }
-  log(): void {
-    console.log(this.name + ' ' + this.date + ' ' + this.dept);
   }
 }

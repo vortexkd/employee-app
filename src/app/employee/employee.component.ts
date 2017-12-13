@@ -25,21 +25,21 @@ export class EmployeeComponent implements OnInit {
   getEmployees(): void {
     this.employeeService.getEmployees().subscribe(
       employees => {
-        console.log(employees);
+        // console.log(employees);
         this.employees = employees;
       }
     );
   }
 
   getWithFilter(): void {
-    console.log(this.filter);
+    // console.log(this.filter);
     if(this.filter === 0) {
       this.query = '';
       return this.getEmployees();
     }
     this.employeeService.filterEmployees(this.query, this.filter).subscribe(
       employees => {
-        console.log(employees);
+        // console.log(employees);
         this.employees = employees;
       }
     );
@@ -52,10 +52,5 @@ export class EmployeeComponent implements OnInit {
     } else {
       this.filter = 0;
     }
-  }
-
-  logEmployees(): void {
-    console.log(this.employees);
-    // alert();
   }
 }

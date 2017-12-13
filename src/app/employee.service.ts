@@ -26,7 +26,7 @@ export class EmployeeService {
 
   filterEmployees(query: string, filter: number): Observable<Employee[]> {
     const params = {queryCriteria: query, column: filter};
-    console.log(query);
+    // console.log(query);
     return this.http.post<MyResponse>(this.dataUrl + 'query', params).map(
       (response: MyResponse) => this.handleResponse(response));
   }
@@ -38,7 +38,7 @@ export class EmployeeService {
   }
 
   updateEmployee(id: string, name: string, join_date: string, dept: string) {
-    console.log('service_update' + name);
+    // console.log('service_update' + name);
     const  params = {name: name, date: join_date, dept: dept, token: id};
     return this.http.post<MyResponse>(this.dataUrl + 'update', params).map(
       (response: MyResponse) => console.log('UPDATE ' + response.message));
@@ -64,7 +64,7 @@ export class EmployeeService {
     if (response.status !== STATUS_OK) {
       return [];
     }
-    console.log(response);
+    // console.log(response);
     return this.castToEmployeeList(response.ret);
   }
 }
